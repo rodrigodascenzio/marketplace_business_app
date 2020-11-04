@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_color">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/tb_main_top"/>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewFlipper">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/emailPart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="12dp"
+                    app:layout_constraintBottom_toTopOf="@id/txt"
+                    app:layout_constraintDimensionRatio="1.4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/email_outline"
+                    android:id="@+id/image"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Qual o seu email?"
+                    android:id="@+id/txt"
+                    android:layout_margin="12dp"
+                    app:layout_constraintBottom_toTopOf="@id/txtSub"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Será o seu novo email para onde enviaremos o codigo de confirmação"
+                    android:id="@+id/txtSub"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintBottom_toTopOf="@id/edtEmailT"
+                    android:layout_margin="12dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:layout_constraintBottom_toTopOf="@id/btnSendEmail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/edtEmailT"
+                    android:hint="email"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/default_color"
+                        android:drawablePadding="12dp"
+                        android:maxLength="@integer/email"
+                        android:inputType="textEmailAddress"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSendEmail"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="CONTINUAR"
+                    android:minHeight="?attr/actionBarSize"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <include
+                    layout="@layout/progress"
+                    android:id="@+id/progress1"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/verifyPart"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="12dp"
+                    app:layout_constraintBottom_toTopOf="@id/txtVerify"
+                    app:layout_constraintDimensionRatio="1.4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_undraw_check_mail"
+                    android:id="@+id/imageVerify"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Digite o codigo que recebeu em seu email"
+                    android:id="@+id/txtVerify"
+                    app:layout_constraintBottom_toTopOf="@id/txtSubEmail"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtSubEmail"
+                    android:fontFamily="sans-serif-thin"
+                    app:layout_constraintBottom_toTopOf="@id/txtSubVerify"
+                    android:layout_margin="12dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pode demorar alguns minutos para o codigo chegar em seu email, verifique também na caixa de spam."
+                    android:id="@+id/txtSubVerify"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintBottom_toTopOf="@id/codigoT"
+                    android:layout_margin="12dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintBottom_toTopOf="@id/btnVerify"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/codigoT"
+                    android:hint="Código"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:background="@color/default_color"
+                        android:id="@+id/codigo"
+                        android:maxLength="@integer/codigo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:drawableStartCompat="@drawable/ic_lock_black_24dp"
+                        android:drawablePadding="12dp"
+                        android:inputType="textCapCharacters"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerify"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="VERIFICAR"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/reenviar"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Não recebeu o codigo?"
+                    android:padding="8dp"
+                    android:layout_margin="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                    android:id="@+id/reenviar"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <include
+                    layout="@layout/progress"
+                    android:id="@+id/progress2"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </ViewFlipper>
+
+</LinearLayout>

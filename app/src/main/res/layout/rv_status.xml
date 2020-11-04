@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:padding="16dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/qtdStatus"
+        android:background="@drawable/circle_status"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginRight="16dp"/>
+
+    <TextView
+        app:layout_constraintTop_toTopOf="@id/qtdStatus"
+        app:layout_constraintBottom_toBottomOf="@id/qtdStatus"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/qtdStatus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+        android:layout_marginLeft="16dp"
+        app:drawableRightCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:gravity="center_vertical"
+        android:id="@+id/status"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

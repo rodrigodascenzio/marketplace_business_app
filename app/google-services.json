@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "700699879090",
+    "firebase_url": "https://nuppin-com.firebaseio.com",
+    "project_id": "nuppin-com",
+    "storage_bucket": "nuppin-com.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700699879090:android:79b24adc4b81657df80bab",
+        "android_client_info": {
+          "package_name": "com.nukno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700699879090-6ejsnl14kkhihrlcl4js4rd6ml9mcevo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nukno",
+            "certificate_hash": "936fe8f5bafa00a2ffcc3322edc7dd5e77e78450"
+          }
+        },
+        {
+          "client_id": "700699879090-873296h4uiehqg9o5bqj4gd6e0j59i7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArXnx1KkCqyclL3B1HkdgpVkUR-m4-gpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700699879090-873296h4uiehqg9o5bqj4gd6e0j59i7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700699879090:android:d519599cae18f51df80bab",
+        "android_client_info": {
+          "package_name": "com.nuppin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700699879090-eg890sjnmfmchgghlv78667hmd8t6qst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nuppin",
+            "certificate_hash": "936fe8f5bafa00a2ffcc3322edc7dd5e77e78450"
+          }
+        },
+        {
+          "client_id": "700699879090-873296h4uiehqg9o5bqj4gd6e0j59i7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArXnx1KkCqyclL3B1HkdgpVkUR-m4-gpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700699879090-873296h4uiehqg9o5bqj4gd6e0j59i7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700699879090:android:14b8e143f8412b0ff80bab",
+        "android_client_info": {
+          "package_name": "com.nuppin.company"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700699879090-851srndjth4g08jit1npq179t75tvih8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nuppin.company",
+            "certificate_hash": "936fe8f5bafa00a2ffcc3322edc7dd5e77e78450"
+          }
+        },
+        {
+          "client_id": "700699879090-873296h4uiehqg9o5bqj4gd6e0j59i7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArXnx1KkCqyclL3B1HkdgpVkUR-m4-gpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700699879090-873296h4uiehqg9o5bqj4gd6e0j59i7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

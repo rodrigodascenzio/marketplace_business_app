@@ -1,0 +1,261 @@
+package com.nuppin.company.Loja.loja;
+
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.nuppin.company.R;
+import com.nuppin.company.Util.AppConstants;
+import com.nuppin.company.Util.DatePickerFragment;
+import com.nuppin.company.Util.Util;
+import com.nuppin.company.Util.UtilShaPre;
+import com.nuppin.company.connection.ConnectApi;
+import com.nuppin.company.model.Company;
+import com.nuppin.company.model.Scheduling;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+
+public class FrAvaliacoesAge extends Fragment implements
+        LoaderManager.LoaderCallbacks<List<Scheduling>>,
+        DatePickerDialog.OnDateSetListener {
+
+    private static final String COMPANY = "COMPANY";
+
+    private LoaderManager loaderManager;
+    private Company company;
+    private final String DATA1 = "DATA1", DATA2 = "DATA2";
+    private TextView data1, data2;
+    private String data1timestamp, data2timestamp;
+    private String TAG;
+    private CardView progress;
+    private RvAvaliacoesAge adapter;
+    private RecyclerView recyclerView;
+    private LottieAnimationView dots;
+    private LinearLayout linearEmpty;
+    private ConstraintLayout constraint;
+    private ConstraintLayout errorLayout;
+    private FloatingActionButton fabError;
+    private List<Scheduling> data;
+
+    public FrAvaliacoesAge() {
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        loaderManager = null;
+    }
+
+    public static FrAvaliacoesAge newInstance(Company company) {
+        FrAvaliacoesAge fragment = new FrAvaliacoesAge();
+        Bundle args = new Bundle();
+        args.putParcelable(COMPANY, company);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null && getArguments().containsKey(COMPANY)) {
+            company = getArguments().getParcelable(COMPANY);
+        }
+        loaderManager = LoaderManager.getInstance(this);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fr_request_rating, container, false);
+
+        constraint = view.findViewById(R.id.container);
+        dots = view.findViewById(R.id.dots);
+        linearEmpty = view.findViewById(R.id.linearEmpty);
+        errorLayout = view.findViewById(R.id.error_layout);
+        fabError = view.findViewById(R.id.fabError);
+        fabError.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dots.setVisibility(View.VISIBLE);
+                errorLayout.setVisibility(View.GONE);
+                loaderManager.restartLoader(0, null, FrAvaliacoesAge.this);
+            }
+        });
+
+        Toolbar toolbar;
+        toolbar = view.findViewById(R.id.toolbar_top);
+        Util.setaToolbar(this, R.string.avaliacoes, toolbar, getActivity(), false, 0);
+
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1;
+        int dayofmonth = cal.get(Calendar.DAY_OF_MONTH);
+
+        data1 = view.findViewById(R.id.data1);
+        data2 = view.findViewById(R.id.data2);
+        progress = view.findViewById(R.id.progress);
+        recyclerView = view.findViewById(R.id.recyclerview_cashflow);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        adapter = new RvAvaliacoesAge();
+        recyclerView.setAdapter(adapter);
+
+
+        data1.setText(Util.zeroToCalendar(month, year));
+        data2.setText(Util.zeroToCalendar(dayofmonth, month, year));
+        data1timestamp = Util.zeroToCalendarToMysql(month, year);
+        data2timestamp = Util.zeroToCalendarToMysql(dayofmonth, month, year);
+
+        data1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TAG = DATA1;
+                DialogFragment timePicker = new DatePickerFragment();
+                timePicker.show(getChildFragmentManager(), AppConstants.CALENDAR);
+            }
+        });
+
+        data2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TAG = DATA2;
+                DialogFragment timePicker = new DatePickerFragment();
+                timePicker.show(getChildFragmentManager(), AppConstants.CALENDAR);
+            }
+        });
+
+        loaderManager.restartLoader(0, null, this);
+
+        return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        loaderManager.destroyLoader(0);
+    }
+
+    @NonNull
+    @Override
+    public Loader<List<Scheduling>> onCreateLoader(int id, Bundle args) {
+        return new FinanceiroLoader(getActivity(), company.getCompany_id(), data1timestamp, data2timestamp, data);
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<List<Scheduling>> loader, List<Scheduling> data) {
+        dots.setVisibility(View.GONE);
+        progress.setVisibility(View.GONE);
+
+        if (data != null) {
+            this.data = data;
+            if (data.size() > 0) {
+                adapter.setAgendamentos(data);
+                constraint.setVisibility(View.VISIBLE);
+                linearEmpty.setVisibility(View.GONE);
+            } else {
+                constraint.setVisibility(View.GONE);
+                linearEmpty.setVisibility(View.VISIBLE);
+            }
+            errorLayout.setVisibility(View.GONE);
+        } else {
+            errorLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<List<Scheduling>> loader) {
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        if (TAG.equals(DATA1)) {
+            data1.setText(Util.zeroToCalendar(day, (month + 1), year));
+            data1timestamp = Util.zeroToCalendarToMysql(day, (month + 1), year);
+
+        } else {
+            data2.setText(Util.zeroToCalendar(day, (month + 1), year));
+            data2timestamp = Util.zeroToCalendarToMysql(day, (month + 1), year);
+        }
+        loaderManager.restartLoader(0, null, FrAvaliacoesAge.this);
+        progress.setVisibility(View.VISIBLE);
+        constraint.setVisibility(View.GONE);
+        linearEmpty.setVisibility(View.GONE);
+    }
+
+    private static class FinanceiroLoader extends AsyncTaskLoader<List<Scheduling>> {
+
+        Context ctx;
+        String stoId, data1, data2;
+        List<Scheduling> data;
+
+        FinanceiroLoader(Context context, String stoId, String data1, String data2, List<Scheduling> data) {
+            super(context);
+            ctx = context;
+            this.stoId = stoId;
+            this.data1 = data1;
+            this.data2 = data2;
+            this.data = data;
+        }
+
+
+        @Override
+        protected void onStartLoading() {
+            if (data != null) {
+                deliverResult(data);
+            }
+            forceLoad();
+        }
+
+
+        @Override
+        public List<Scheduling> loadInBackground() {
+            Gson gson = new Gson();
+            String stringJson = ConnectApi.GET(ConnectApi.SCHEDULING_AVALIACOES + "/" + stoId + "," + data1 + "," + data2, getContext());
+            JsonParser parser = new JsonParser();
+            try {
+                JsonObject jObj = parser.parse(stringJson).getAsJsonObject();
+                Scheduling[] orders = gson.fromJson(jObj.getAsJsonArray(AppConstants.RATING), Scheduling[].class);
+                return new ArrayList<>(Arrays.asList(orders));
+            } catch (Exception e) {
+                FirebaseCrashlytics.getInstance().log(UtilShaPre.getDefaultsString(AppConstants.USER_ID, getContext()));
+                FirebaseCrashlytics.getInstance().recordException(e);
+                return null;
+            }
+        }
+    }
+
+    public interface ToActivity {
+        void nada();
+    }
+}

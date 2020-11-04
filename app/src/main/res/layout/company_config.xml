@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_color">
+
+    <include
+        android:id="@+id/tb_main_top"
+        layout="@layout/toolbar" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/dots"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_autoPlay="true"
+        android:visibility="visible"
+        app:lottie_fileName="list_loading.json"
+        app:lottie_loop="true"
+        app:lottie_speed="1.25" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btnSalvar"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardVisibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:id="@+id/companyAnalyze"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:gravity="center"
+                        app:drawableEndCompat="@drawable/message_alert_outline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/estabelecimento_em_analise"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/companyVisibility"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visibilidade"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Switch
+                        android:id="@+id/visibilitySwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:showText="true"
+                        android:switchTextAppearance="@style/customSwitch"
+                        android:textOff="@string/off"
+                        android:textOn="@string/on"
+                        android:thumb="@drawable/vswitch_thumb_selector"
+                        android:track="@drawable/vswitch_track_selector"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardHorarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintTop_toBottomOf="@id/cardVisibility">
+
+                <TextView
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:padding="16dp"
+                    android:text="@string/config_horarios_btn"
+                    android:textAlignment="center"
+                    app:drawableEndCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardMeioPag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintTop_toBottomOf="@id/cardHorarios">
+
+                <TextView
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:padding="16dp"
+                    android:text="@string/config_meio_pagamento_btn"
+                    android:textAlignment="center"
+                    app:drawableEndCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardConfigLoja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintTop_toBottomOf="@id/cardMeioPag">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/txtTitulo1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@string/config_definicoes_txt"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <CheckBox
+                        android:id="@+id/opcaoPdv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="sans-serif-light"
+                        android:padding="8dp"
+                        android:text="@string/config_check_pdv"
+                        app:layout_constraintTop_toBottomOf="@id/txtTitulo1" />
+
+                    <CheckBox
+                        android:id="@+id/opcaoEntrega"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="sans-serif-light"
+                        android:padding="8dp"
+                        android:text="@string/config_check_entregas_locais"
+                        app:layout_constraintTop_toBottomOf="@id/opcaoPdv" />
+
+                    <CheckBox
+                        android:id="@+id/opcaoRetirada"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="sans-serif-light"
+                        android:padding="8dp"
+                        android:text="@string/config_check_retiradas"
+                        app:layout_constraintTop_toBottomOf="@id/opcaoEntrega" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardEntrega"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintTop_toBottomOf="@id/cardConfigLoja">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/txtTitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@string/config_detalhe_entrega_txt"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <LinearLayout
+                        android:id="@+id/linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/txtTitulo">
+
+                        <TextView
+                            android:id="@+id/txtTempoEntrega"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/config_tempo_entrega"
+                            android:fontFamily="sans-serif-light"/>
+
+                        <TextView
+                            android:id="@+id/tempoMaximo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/edit_text"
+                            android:drawablePadding="12dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:gravity="center"
+                            android:hint="Definir tempo"
+                            app:drawableEndCompat="@drawable/ic_edit_grey_12dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="12dp"
+                        android:background="@color/shadow_color"
+                        app:layout_constraintTop_toBottomOf="@id/linear"/>
+
+                    <TextView
+                        android:id="@+id/formaEntregaTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/formas_de_entrega"
+                        app:layout_constraintTop_toBottomOf="@id/view" />
+
+                    <RadioGroup
+                        android:id="@+id/formaEntrega"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/formaEntregaTxt">
+
+                        <RadioButton
+                            android:id="@+id/precoFixo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/config_preco_fixo" />
+
+                        <RadioButton
+                            android:id="@+id/fixoMaisDistancia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/config_fixo_variavel" />
+
+                        <RadioButton
+                            android:id="@+id/apenasDistancia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/config_variavel" />
+
+                        <RadioButton
+                            android:id="@+id/gratis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/config_entrega_gratis" />
+
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/wrapValorPrecoFixo"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:hint="@string/hint_preco_fixo"
+                        android:inputType="numberDecimal"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/formaEntrega">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/valorPrecoFixo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/background_light"
+                            android:inputType="number"
+                            android:maxLength="@integer/valor" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/wrapValorPrecoVariavel"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:hint="@string/config_hint_variavel"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/wrapValorPrecoFixo">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/valorPrecoVariavel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLength="@integer/valor" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/opcaoCurtasDistancias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="16dp"
+                        android:switchPadding="12dp"
+                        android:text="@string/config_switch_frete_gratis"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/wrapValorPrecoVariavel" />
+
+                    <SeekBar
+                        android:id="@+id/distanciaMaxGratis"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:max="10"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/valorMaxDistanciaGratis"
+                        app:layout_constraintTop_toBottomOf="@id/opcaoCurtasDistancias" />
+
+                    <TextView
+                        android:id="@+id/valorMaxDistanciaGratis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/num_rating"
+                        android:text="@string/config_raio_default_value"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@id/distanciaMaxGratis"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/distanciaMaxGratis" />
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchMinPurchase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="16dp"
+                        android:switchPadding="12dp"
+                        android:text="@string/valor_minimo_quando_frete_gratis"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/valorMaxDistanciaGratis" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/minPurchaseWrap"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:hint="Valor minimo"
+                        android:inputType="numberDecimal"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/switchMinPurchase">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/minPurchase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/background_light"
+                            android:inputType="number"
+                            android:maxLength="@integer/valor" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRaio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="5dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/cardEntrega">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtTittle"
+                        android:text="@string/config_raio_atendimento"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical"
+                    android:id="@+id/constInfoMaxKmValue"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/txtTittle">
+
+                    <TextView
+                        android:id="@+id/infoMaxKmValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="0km"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:background="@drawable/border_green"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/txtMaxDistanciaValue"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingEnd="12dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="12dp"
+                        android:text="É o seu raio de atendimento maximo para as suas definições"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/infoMaxKmValue"
+                        app:layout_constraintTop_toTopOf="@id/infoMaxKmValue"
+                        app:layout_constraintBottom_toBottomOf="@id/infoMaxKmValue"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:id="@+id/txtMaxDistancia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="16dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        android:text="@string/config_raio_atendimento_sub"
+                        app:layout_constraintTop_toBottomOf="@id/constInfoMaxKmValue"/>
+
+                    <SeekBar
+                        android:id="@+id/distanciaMax"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:progress="0"
+                        android:padding="12dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/valorMaxDistancia"
+                        app:layout_constraintTop_toBottomOf="@id/txtMaxDistancia" />
+
+                    <TextView
+                        android:id="@+id/valorMaxDistancia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/num_rating"
+                        android:text="@string/config_raio_default_value"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@id/distanciaMax"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/distanciaMax" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical"
+                        android:id="@+id/constMaxFeeInfo"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/distanciaMax">
+
+                        <TextView
+                            android:id="@+id/infoMaxfee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingTop="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:text="R$ 0,00"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:background="@drawable/border_green"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/infoMaxfeeTxt"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingEnd="12dp"
+                            android:gravity="center_vertical"
+                            android:paddingStart="12dp"
+                            android:text="É o maximo que a sua taxa de entrega chegara a custar"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/infoMaxfee"
+                            app:layout_constraintTop_toTopOf="@id/infoMaxfee"
+                            app:layout_constraintBottom_toBottomOf="@id/infoMaxfee"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardRaio" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSalvar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:minHeight="?attr/actionBarSize"
+        android:text="@string/btn_save"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <include
+        android:id="@+id/error_layout"
+        layout="@layout/error_layout" />
+
+    <include
+        android:id="@+id/progress"
+        layout="@layout/progress" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

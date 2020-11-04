@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="order_left">8dp</dimen>
+    <dimen name="order_top">8dp</dimen>
+    <dimen name="order_right">8dp</dimen>
+    <dimen name="order_bottom">8dp</dimen>
+    <dimen name="order_first_last">8dp</dimen>
+
+    <dimen name="bottom_last_item_margin">16dp</dimen>
+    <dimen name="bottom_first_item_margin">16dp</dimen>
+    <dimen name="bottom_first_item_right_margin">8dp</dimen>
+    <dimen name="pdv">0dp</dimen>
+
+    <dimen name="card_main">16dp</dimen>
+
+
+    <dimen name="frorder_margin_top">0dp</dimen>
+    <dimen name="frorder_margin_bottom">0dp</dimen>
+
+    <dimen name="fr_main_photo_guideline">0.3</dimen>
+
+
+</resources>

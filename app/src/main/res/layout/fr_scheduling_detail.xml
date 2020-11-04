@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@color/default_color">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewLoja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ageUserRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/num_rating"
+                android:drawablePadding="2dp"
+                android:fontFamily="sans-serif-light"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@color/background_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ageUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:drawablePadding="4dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/ageUserRating"
+                app:layout_constraintRight_toLeftOf="@id/chat"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/chat"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@color/secondary_text"
+                app:backgroundTint="@color/balaoRemetente"
+                app:icon="@drawable/ic_person_black_24dp"
+                app:iconTint="@color/secondary_text"
+                app:layout_constraintBottom_toTopOf="@id/ageUser"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ageUser" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toBottomOf="@id/cardViewLoja">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/servico"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:padding="12dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/preco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:textColor="@color/green_dark"
+                app:drawableStartCompat="@drawable/cash_usd_outline12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/ageHoraInicio" />
+
+            <TextView
+                android:id="@+id/dataAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                app:drawableStartCompat="@drawable/calendar_12dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/servico" />
+
+            <TextView
+                android:id="@+id/ageHoraInicio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                app:drawableStartCompat="@drawable/calendar_clock12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/servico" />
+
+            <TextView
+                android:id="@+id/ageFuncionario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:padding="12dp"
+                app:drawableStartCompat="@drawable/datail_card_person"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ageHoraInicio" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/obs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/edit_text"
+        android:drawablePadding="8dp"
+        android:fontFamily="sans-serif-light"
+        android:padding="12dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/cardop" />
+
+    <TextView
+        android:id="@+id/meioPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawablePadding="8dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:drawableStartCompat="@drawable/receipt"
+        app:layout_constraintTop_toBottomOf="@id/obs" />
+
+    <View
+        android:id="@+id/viewTop2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/background_light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meioPagamento" />
+
+    <TextView
+        android:id="@+id/subtotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:text="@string/subtotal"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintEnd_toStartOf="@id/resultSubtotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewTop2" />
+
+    <TextView
+        android:id="@+id/resultSubtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintBottom_toTopOf="@id/subtotal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+    <TextView
+        android:id="@+id/entrega"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:text="@string/entrega"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/resultEntrega"
+        app:layout_constraintStart_toStartOf="  parent"
+        app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+    <TextView
+        android:id="@+id/resultEntrega"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/entrega"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/entrega" />
+
+    <TextView
+        android:id="@+id/desconto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:text="@string/desconto"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/resulDesconto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/entrega" />
+
+    <TextView
+        android:id="@+id/resulDesconto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/desconto"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/desconto" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/background_light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/desconto" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:text="@string/total"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintEnd_toStartOf="@id/resultTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view2" />
+
+    <TextView
+        android:id="@+id/resultTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/shadow_f5"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/green_dark"
+        app:layout_constraintBottom_toTopOf="@id/total"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total" />
+
+    <View
+        android:id="@+id/viewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/background_light"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total" />
+
+    <RatingBar
+        android:id="@+id/ratingUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:numStars="5"
+        android:stepSize="1"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewBottom" />
+
+    <ImageButton
+        android:id="@+id/btnRecusar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:text="@string/recusar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ratingUser"
+        app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAceitar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:minHeight="?attr/actionBarSize"
+        android:text="@string/aceitar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btnRecusar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ratingUser" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

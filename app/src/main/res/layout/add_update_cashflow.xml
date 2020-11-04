@@ -1,0 +1,212 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_color">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/tb_main_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <RadioGroup
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/radioGroup"
+                android:layout_marginTop="8dp"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/despesa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:drawableStartCompat="@drawable/ic_arrow_downward_black_24dp"
+                    android:drawablePadding="4dp"
+                    android:text="@string/despesa"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline" />
+
+                <RadioButton
+                    android:id="@+id/receita"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    app:drawableStartCompat="@drawable/ic_arrow_upward_black_24dp"
+                    android:drawablePadding="4dp"
+                    android:text="@string/receita"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/nomeWrap"
+                android:layout_marginTop="8dp"
+                android:hint="@string/financeiro_titulo_movimentacao"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nome"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/default_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="@integer/nome_item"
+                    android:inputType="textCapSentences|text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="8dp"
+                android:id="@+id/precoWrap"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nomeWrap"
+                app:layout_constraintRight_toLeftOf="@id/data"
+                android:hint="@string/hint_valor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/preco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:maxLength="@integer/valor"
+                    android:inputType="number"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/descWrap"
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_descricao"
+                app:counterMaxLength="250"
+                app:counterEnabled="true"
+                app:helperTextEnabled="true"
+                app:helperText="Opcional"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/precoWrap">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/desc"
+                    android:minLines="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="@integer/descricao"
+                    android:inputType="textCapSentences|textMultiLine"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:hint="@string/hint_data"
+                    android:background="@drawable/edit_text"
+                    app:layout_constraintLeft_toRightOf="@id/precoWrap"
+                    app:layout_constraintTop_toTopOf="@id/precoWrap"
+                    app:layout_constraintBottom_toBottomOf="@id/precoWrap"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:id="@+id/data"
+                    android:padding="15dp"
+                    app:drawableStartCompat="@drawable/calendar_24dp"
+                    android:drawablePadding="8dp"
+                    android:focusable="false"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAnexo"
+                android:text="Anexo"
+                app:drawableEndCompat="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                app:layout_constraintTop_toBottomOf="@id/descWrap"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/imageCadastro"
+                app:roundedCornerRadius="5dp"
+                app:layout_constraintDimensionRatio="1.4"
+                app:actualImageScaleType="focusCrop"
+                app:layout_constraintTop_toBottomOf="@id/txtAnexo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:placeholderImage="@drawable/image_plus_96"
+                android:background="@drawable/bk_add_photo"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageCadastro"
+                app:layout_constraintVertical_bias="1.0">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/botaoDeleta"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Excluir registro"
+                android:visibility="gone"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="8dp"
+                android:id="@+id/botao"
+                android:text="@string/btn_save"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <include
+        layout="@layout/progress"
+        android:id="@+id/progressCard"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

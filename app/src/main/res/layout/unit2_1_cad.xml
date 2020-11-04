@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <include
+        android:id="@+id/tb_main_top"
+        layout="@layout/toolbar_cadastro"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        android:id="@+id/guideline"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:id="@+id/txtInfo"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:textColor="@color/background_light"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        android:text="Qual opção se adequa mais ao seu tipo de negócio?"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/corners_top"
+        android:paddingTop="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cardMovel">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/fixo">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Negócio fixo"
+                    android:drawablePadding="16dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastra o horário de funcionamento para ficar online ou offline automaticamente, aceita entregas ou retiradas."
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:gravity="center_vertical"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintTop_toBottomOf="@id/txtInfo"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="5dp"
+            android:id="@+id/cardMovel"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/movel">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Negócio móvel"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aciona manualmente quando quer ficar online ou offline, conforme em movimento a localização vai atualizando, aceita apenas entregas."
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:gravity="center_vertical"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintTop_toBottomOf="@id/txtInfo"/>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        layout="@layout/progress"
+        android:id="@+id/progress"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <include
+        android:id="@+id/tb_main_top"
+        layout="@layout/toolbar_cadastro"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        android:id="@+id/guideline"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:id="@+id/txtInfo"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/background_light"
+            app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            android:text="@string/o_que_vai_vender"/>
+
+        <LinearLayout
+            app:layout_constraintVertical_bias="1.0"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/corners_top"
+            android:id="@+id/categorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+                    <TextView
+                        android:minHeight="?attr/actionBarSize"
+                        app:drawableEndCompat="@drawable/food"
+                        android:id="@+id/alimentos"
+                        android:text="@string/alimentos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:padding="24dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:gravity="center_vertical"
+                        android:textStyle="bold"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/shadow_color"/>
+
+                    <TextView
+                        android:minHeight="?attr/actionBarSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/produtos"
+                        android:id="@+id/produtos"
+                        android:drawablePadding="16dp"
+                        android:padding="24dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        app:drawableEndCompat="@drawable/tshirt_crew_outline"
+                        android:gravity="center_vertical"
+                        android:textStyle="bold"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/shadow_color"/>
+
+
+                    <TextView
+                        android:minHeight="?attr/actionBarSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/servico"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:id="@+id/service"
+                        android:drawablePadding="16dp"
+                        android:padding="24dp"
+                        app:drawableEndCompat="@drawable/hair_dryer_outline"
+                        android:gravity="center_vertical"
+                        android:textStyle="bold"/>
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

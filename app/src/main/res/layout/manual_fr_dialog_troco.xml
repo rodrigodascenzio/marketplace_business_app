@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/about_fragment"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="12dp"
+            app:drawableTopCompat="@drawable/shopping_outline"
+            android:drawablePadding="12dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/trocoWrap"
+            android:hint="0,00"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTroco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/default_color"
+                android:drawablePadding="12dp"
+                app:drawableStartCompat="@drawable/cash_usd_outline"
+                app:drawableTint="@color/green_dark"
+                android:inputType="number"
+                android:maxLength="@integer/valor"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPositive"
+            android:text="@string/confirmar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_margin="12dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNegative"
+            android:text="@string/cancelar"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

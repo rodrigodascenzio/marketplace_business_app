@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <include
+        android:id="@+id/tb_main_top"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/nested"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutCarrinho"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nested">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:id="@+id/cardop"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/infoEntrega"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/nome"
+                        android:text="Produtos"
+                        android:layout_margin="8dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/infoEntrega"
+                        />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:overScrollMode="never"
+                        android:layout_marginTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:id="@+id/recyclerview_cart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/nome"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerview_cart"
+                        android:layout_gravity="center"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:gravity="center"
+                        android:id="@+id/addItemProd"
+                        android:text="+ Adicionar item"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="12dp"
+                android:id="@+id/cardCupom"
+                android:layout_width="match_parent"
+                app:cardCornerRadius="5dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardop">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/adicionar"
+                        app:drawableStartCompat="@drawable/ticket_outline"
+                        android:drawablePadding="12dp"
+                        android:layout_width="0dp"
+                        android:text="Adicionar desconto"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:textColor="@color/secondary_text"
+                        android:gravity="center_vertical"
+                        android:id="@+id/txtCupom"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/adicionar"
+                        android:text="ADICIONAR"
+                        android:layout_margin="8dp"
+                        android:gravity="center_vertical"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="12dp"
+                android:id="@+id/cardviewEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardCupom">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/pedidoTxt"
+                        android:text="Tipo do pedido"
+                        android:layout_margin="8dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/pedidoTxt"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/wrapBtn">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Entrega"
+                                android:id="@+id/btnEntregar"
+                                android:textColor="@color/shadow_color"
+                                android:button="@null"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Retirada"
+                                android:id="@+id/btnRetirada"
+                                android:textColor="@color/shadow_color"
+                                android:button="@null"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Caixa"
+                                android:textColor="@color/shadow_color"
+                                android:id="@+id/btnPos"
+                                android:button="@null"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+                        </RadioGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/wrapBtn"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/trocarEndereco"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:textColor="@color/secondary_text"
+                        android:id="@+id/txtEndereco"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/trocarEndereco"
+                        android:visibility="gone"
+                        android:padding="16dp"
+                        app:layout_constraintTop_toTopOf="@id/txtEndereco"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/txtEndereco"
+                        app:drawableEndCompat="@drawable/ic_edit_black_24dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addAddress"
+                        android:visibility="gone"
+                        android:padding="16dp"
+                        android:text="Adicionar Endereço"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        app:layout_constraintTop_toBottomOf="@id/wrapBtn"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/obsWrap"
+                android:layout_margin="12dp"
+                android:padding="8dp"
+                app:hintEnabled="false"
+                android:visibility="gone"
+                android:background="@drawable/border_green"
+                app:layout_constraintTop_toBottomOf="@id/cardviewEndereco">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/obs"
+                android:background="@color/background_light"
+                android:hint="Alguma observação?"
+                android:maxLength="@integer/descricao"
+                app:drawableStartCompat="@drawable/comment_text_outline"
+                android:drawablePadding="12dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/secondary_text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="24dp"
+                android:background="@color/shadow_color2"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                android:id="@+id/meioPagamento"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/obsWrap">
+
+                <TextView
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/alterar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:drawableStartCompat="@drawable/receipt"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                    android:id="@+id/meioPagamentoEscolhido"
+                    android:text="FORMA DE PAGAMENTO"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/alterar"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ALTERAR"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:layout_constraintBottom_toTopOf="@id/meioPagamentoEscolhido"
+                    app:layout_constraintTop_toBottomOf="@id/meioPagamentoEscolhido"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/background_light"
+            android:id="@+id/viewTop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/meioPagamento"/>
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/subtotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Subtotal"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintEnd_toStartOf="@id/resultSubtotal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewTop" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/resultSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintBottom_toTopOf="@id/subtotal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/Entrega"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:text="Entrega"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@id/resultEntrega"
+                app:layout_constraintStart_toStartOf="  parent"
+                app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/resultEntrega"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/Entrega"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Entrega" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/desconto"
+                android:visibility="gone"
+                android:padding="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Desconto"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintEnd_toStartOf="@id/resulDesconto"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Entrega" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:visibility="gone"
+                android:id="@+id/resulDesconto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintBottom_toTopOf="@id/desconto"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/desconto" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_light"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/desconto" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Total"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/resultTotal"
+                app:layout_constraintTop_toBottomOf="@id/view2" />
+
+            <TextView
+                android:background="@color/shadow_f5"
+                android:id="@+id/resultTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="@color/green_dark"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintBottom_toTopOf="@id/total"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/background_light"
+                android:id="@+id/viewBottom"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/total"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnComprar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_margin="16dp"
+            android:text="FAZER PEDIDO"
+            app:layout_constraintTop_toBottomOf="@id/viewBottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/dots"
+        android:background="@color/background_light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="list_loading.json"
+        app:lottie_loop="true"
+        app:lottie_speed="1.25"/>
+
+    <LinearLayout
+        android:id="@+id/linearEmpty"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/shopping_outline"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:gravity="center"
+            android:id="@+id/addItem"
+            android:text="+ Adicionar itens"/>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/error_layout"
+        android:id="@+id/error_layout"/>
+
+    <include
+        layout="@layout/progress"
+        android:id="@+id/progress"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

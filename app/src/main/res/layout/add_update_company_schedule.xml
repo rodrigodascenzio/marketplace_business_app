@@ -1,0 +1,173 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_color">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/tb_main_top"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="16dp"
+        android:id="@+id/cardLinear">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtHorario"
+                android:layout_margin="8dp"
+                android:text="@string/selecione_horario"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"/>
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/txtHorario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="8dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:id="@+id/linear"
+            android:baselineAligned="false">
+
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_hora_inicio"
+                    android:background="@drawable/edit_text"
+                    android:drawablePadding="12dp"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    app:drawableStartCompat="@drawable/calendar_clock"
+                    android:focusable="false"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/inicio"
+                    />
+
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:background="@drawable/edit_text"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_hora_termino"
+                    android:layout_marginStart="8dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:padding="8dp"
+                    android:focusable="false"
+                    android:drawablePadding="12dp"
+                    app:drawableStartCompat="@drawable/calendar_clock"
+                    android:id="@+id/termino"
+                    />
+
+        </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/cardCheck"
+        app:layout_constraintTop_toBottomOf="@id/cardLinear"
+        app:layout_constraintBottom_toTopOf="@id/linearBtn"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt"
+                android:layout_margin="16dp"
+                android:text="@string/select_the_days_of_that_time"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:overScrollMode="never"
+                android:id="@+id/dias"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/dots"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/background_light"
+                app:layout_constraintTop_toBottomOf="@id/txt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="list_loading.json"
+                app:lottie_loop="true"
+                app:lottie_speed="1.25"/>
+
+            <include
+                layout="@layout/error_layout"
+                android:id="@+id/error_layout"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardCheck"
+        app:layout_constraintVertical_bias="1.0">
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/botaoDeleta"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/excluir_horario"
+        android:visibility="gone"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/botao"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/progress"
+        android:id="@+id/progress"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

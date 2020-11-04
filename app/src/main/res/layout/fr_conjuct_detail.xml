@@ -1,0 +1,161 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_color">
+
+    <include
+        android:id="@+id/tb_main_top"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ScrollView
+        android:id="@+id/nested"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <TextView
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/nome"
+                tools:text="tenis massa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:textColor="@color/secondary_text"
+                android:fontFamily="sans-serif-medium"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wrapDesc"
+                android:layout_width="0dp"
+                app:cardCornerRadius="5dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nome">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Descrição"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="12dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"/>
+
+                    <TextView
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:layout_margin="12dp"
+                        android:id="@+id/desc"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="descricão" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="5dp"
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/wrapDesc"
+                app:layout_constraintBottom_toTopOf="@id/view"
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_margin="12dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:overScrollMode="never"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/conjuct_recycler"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/teste"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:text=" + Adicionar item"
+                app:layout_constraintTop_toBottomOf="@id/card"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        android:background="@color/shadow_f5"
+        android:id="@+id/framProgress">
+        <include
+            android:layout_gravity="center"
+            layout="@layout/progress"
+            android:id="@+id/progress"
+            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+    </FrameLayout>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/dots"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/background_light"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="list_loading.json"
+        app:lottie_loop="true"
+        app:lottie_speed="1.25"/>
+
+    <include
+        layout="@layout/error_layout"
+        android:id="@+id/error_layout"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="12dp"
+        app:srcCompat="@drawable/ic_edit_white_24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

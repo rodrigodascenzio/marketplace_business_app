@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="rua_max">90</integer>
+    <integer name="bairro_max">90</integer>
+    <integer name="cidade_max">50</integer>
+    <integer name="estado_max">2</integer>
+    <integer name="collection_max">2</integer>
+    <integer name="numero_max">5</integer>
+    <integer name="chat">500</integer>
+    <integer name="valor">8</integer>
+    <integer name="nome_item">90</integer>
+    <integer name="nome_loja">50</integer>
+    <integer name="nome_usuario">50</integer>
+    <integer name="descricao">250</integer>
+    <integer name="descricao_produto">1500</integer>
+    <integer name="descricao_loja">500</integer>
+    <integer name="site">50</integer>
+    <integer name="face">50</integer>
+    <integer name="insta">50</integer>
+    <integer name="employee_position">50</integer>
+    <integer name="email">90</integer>
+    <integer name="celular">20</integer>
+    <integer name="codigo">6</integer>
+    <integer name="cupom_qtd">3</integer>
+
+
+
+</resources>

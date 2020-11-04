@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="5dp"
+    android:background="@color/primary_light">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_percent="0.2"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:roundAsCircle="true"
+            app:placeholderImage="@drawable/ic_person_black_24dp"
+            android:id="@+id/foto"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/employee"
+            android:layout_margin="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/secondary_text"
+            app:layout_constraintRight_toLeftOf="@id/linear"
+            app:layout_constraintLeft_toRightOf="@id/guideline"/>
+
+        <TextView
+            android:id="@+id/txtCargo"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toLeftOf="@id/linear"
+            app:layout_constraintLeft_toRightOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/employee"
+            app:drawableStartCompat="@drawable/datail_card_person"
+            android:drawablePadding="8dp"/>
+
+        <TextView
+            android:id="@+id/txtHorario"
+            android:layout_margin="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txtCargo"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintLeft_toRightOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/linear"
+            app:drawableStartCompat="@drawable/ic_schedule_black_24dp"
+            android:drawablePadding="8dp"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/linear"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            app:layout_constraintRight_toLeftOf="@id/btnTxt">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/icon"
+                android:padding="8dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/user"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:visibility="gone"
+                android:background="@drawable/border_green"
+                android:text="você"
+                android:textColor="@color/green_dark"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/btnTxt"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>

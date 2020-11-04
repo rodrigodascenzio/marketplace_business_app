@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/quantidade"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:padding="8dp"
+        android:textColor="@color/secondary_text"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_clear_green_12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nome"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintBottom_toBottomOf="@id/quantidade"
+        app:layout_constraintLeft_toRightOf="@id/quantidade"
+        app:layout_constraintRight_toLeftOf="@id/preco"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tamanho"
+        android:visibility="gone"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@drawable/num_rating"
+        android:backgroundTint="@color/orange_light"
+        android:textColor="@color/background_light"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        app:layout_constraintLeft_toRightOf="@id/quantidade"
+        app:layout_constraintTop_toBottomOf="@id/nome"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+                        android:overScrollMode="never"
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="4dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/quantidade"
+        app:layout_constraintRight_toLeftOf="@id/preco"
+        app:layout_constraintTop_toBottomOf="@id/tamanho"/>
+
+    <TextView
+        android:id="@+id/obs"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:textColor="@color/shadow_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/quantidade"
+        app:layout_constraintRight_toLeftOf="@id/preco"
+        app:layout_constraintTop_toBottomOf="@id/recycler" />
+
+    <TextView
+        android:id="@+id/preco"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintRight_toLeftOf="@id/stockWarning"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/quantidade"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/obs"
+        android:background="@color/shadow_f5"/>
+
+    <TextView
+        android:id="@+id/stockWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:drawableEndCompat="@drawable/message_alert_outline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/cartExcluir"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/cartExcluir"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="gone"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:drawableStartCompat="@drawable/ic_clear_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/cartEditar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cartEditar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="gone"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:drawableStartCompat="@drawable/ic_edit_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

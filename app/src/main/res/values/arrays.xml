@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="loja_bottom">
+        <item>@string/produtos_bottom</item>
+        <item>@string/cupom_bottom</item>
+        <item>@string/financeiro_bottom</item>
+        <item>@string/relatorio_bottom</item>
+        <item>@string/equipe_bottom</item>
+        <item>@string/faturas_bottom</item>
+        <item>@string/blog_bottom</item>
+    </string-array>
+
+    <string-array name="servico_loja_bottom">
+        <item>@string/servicos_bottom</item>
+        <item>@string/cupom_bottom</item>
+        <item>@string/financeiro_bottom</item>
+        <item>@string/relatorio_bottom</item>
+        <item>@string/equipe_bottom</item>
+        <item>@string/faturas_bottom</item>
+        <item>@string/blog_bottom</item>
+    </string-array>
+
+    <string-array name="dias">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+</resources>

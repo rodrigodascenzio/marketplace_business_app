@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <include
+        android:id="@+id/tb_main_top"
+        layout="@layout/toolbar_cadastro"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        android:id="@+id/guideline"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:id="@+id/txtInfo"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:textColor="@color/background_light"
+        app:layout_constraintTop_toBottomOf="@id/tb_main_top"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        android:text="@string/qual_sera_forma_cadastro"/>
+
+    <RadioGroup
+        android:background="@drawable/corners_top"
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline">
+
+            <RadioButton
+                android:padding="24dp"
+                android:drawablePadding="12dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:id="@+id/cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cpf"
+                app:drawableEndCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:button="@null"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/shadow_color"/>
+
+            <RadioButton
+                android:padding="24dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:id="@+id/cnpj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cnpj"
+                app:drawableEndCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:button="@null"/>
+
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.nuppin.company.Loja.Login.AutoScrollViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/viewPager"
+        android:paddingBottom="?attr/actionBarSize"
+        android:paddingTop="?attr/actionBarSize"
+        android:background="@color/background_light"
+        app:layout_constraintBottom_toTopOf="@id/txt"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabDots"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"/>
+
+            <TextView
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:text="Como gostaria de entrar?"
+                android:id="@+id/txt"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintBottom_toTopOf="@id/email"
+                android:layout_marginBottom="12dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Email"
+                app:icon="@drawable/ic_email_cinza_24dp"
+                android:minHeight="?attr/actionBarSize"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toStartOf="@id/celular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/celular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Celular"
+                app:icon="@drawable/whatsapp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                android:minHeight="?attr/actionBarSize"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/email"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <include
+        layout="@layout/progress"
+        android:id="@+id/progress"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
